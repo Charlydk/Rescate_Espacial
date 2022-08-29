@@ -183,7 +183,7 @@ body {
     overflow: hidden;
     border: 2px solid #2c0b8e;
     color: #2c0b8e;
-    left: 40%;
+    left: 44%;
   }
 #boton:hover {
     color: rgb(255, 0, 0);
@@ -206,14 +206,14 @@ body {
 .footer {
 	background: #12203E;
   width: 100%;
-  padding: 1rem 0;
+  padding: 0;
   text-align: center;
   margin-top: auto;
   line-height: 20px;
 	color: #fff;
 	grid-area: footer;
   bottom: 0%;
-  position: absolute;
+  
   
 }
 
