@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link rel="stylesheet" href="styles.css">
+	<title>Juego del Ahorcado</title>
+
+    
+
+</head>
+
+<body>
+	<div class="contenedor">
+		<header class="header">
+            <table class="tableHeader">
+            <tr>
+                <td style="justify-content:initial;"><img src="/img/logo.png" alt="logo"></td>
+                <td style="text-align:center ;"><h2>Challenge 2</h2></td>
+                <td style="text-align:right ;"><h5>#Oracle <br> #AluraLatam </h5></td>
+            </tr>
+        </table>
+            
+            
+            
+		</header>
+		<main class="contenido">
+            <svg viewBox="0 0 1320 300">
+
+                <!-- Symbol -->
+                <symbol id="s-text">
+                  <text text-anchor="middle"
+                        x="50%" y="35%" dy=".10em">
+                    JUEGO DEL
+                  </text>
+                  <text text-anchor="middle"
+                        x="50%" y="75%" dy=".25em">
+                    AHORCADO
+                  </text>
+
+                </symbol>  
+              
+                <!-- Duplicate symbols -->
+                <use xlink:href="#s-text" class="text"
+                     ></use>
+                <use xlink:href="#s-text" class="text"
+                     ></use>
+                <use xlink:href="#s-text" class="text"
+                     ></use>
+                <use xlink:href="#s-text" class="text"
+                     ></use>
+                <use xlink:href="#s-text" class="text"
+                     ></use>
+              
+              </svg>
+
+		</main>
+		
+		<div class="widget-1">
+			<button class="botonInicio" id="boton">Iniciar Juego</button>
+
+            <button class="botonSolitario" id="boton"  onclick="location.href='Msolitario.html'" style="display: none">Solitari@</button>
+
+            <button class="botonVersus" id="boton" onclick="location.href='Mversus.html'" style="display: none ">VS Amig@</button>
+		</div>
+
+       		
+	</div>
+
+    <div>
+        <footer class="footer">
+            <h4>#AluraChallenge</h4>
+            <h4>©Todos los derechos reservados - 2022</h4>
+            <h4>Creado por Bernardino Fabian Augusto</h4>
+            <a title="GitHub" href="https://github.com/Charlydk">  <img src="/img/github_logo_icon_143772.ico" alt="icolinkedin"></a>
+            <a title="Linkdin" href="https://www.linkedin.com/in/fabian-bernardino/">  <img src="/img/linkedin_socialnetwork_17441.ico" alt="icolinkedin"></a>
+        </footer>
+    </div>
+    
+
+</body>
+
+
+<script>
+    var botoniniciar = document.querySelector(".botonInicio");
+botoniniciar.addEventListener("click", function (event){
+    event.preventDefault();
+    document.querySelector(".botonSolitario").style.display = "block";
+    document.querySelector(".botonVersus").style.display = "block";
+
+    document.querySelector(".botonInicio").style.display = "none"
+
+})
+</script>
+
+</html>
