@@ -259,7 +259,7 @@ body {
 
      #boton{
    
-    left: auto;
+    left: 35%;
   }
 
 
@@ -277,6 +277,7 @@ body {
 						 "contenido"
 						 "widget-1"
              "footer";
+    background-size: auto
 	}
 
   .tableHeader{ border-collapse: collapse;
@@ -289,4 +290,10 @@ body {
     height: 100%;
     color: #fff;
   }
+
+  #boton{
+   
+    left: 25%;
+  }
+
 }
