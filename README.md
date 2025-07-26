@@ -4,8 +4,8 @@
 
 **➡️ [Juega la demo en vivo aquí](https://charlydk.github.io/Rescate_Espacial/)**
 
-![Captura de pantalla del juego Rescate Espacial](URL_DE_TU_IMAGEN_AQUÍ)
-*(Recuerda subir una captura de pantalla a tu repositorio y enlazarla aquí)*
+![Captura de pantalla del juego Rescate Espacial](https://github.com/Charlydk/Rescate_Espacial/blob/main/img/screenshot.png?raw=true)
+
 
 ---
 
