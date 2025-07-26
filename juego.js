@@ -1,4 +1,3 @@
-// Espera a que todo el contenido del HTML se cargue antes de ejecutar el script
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. SELECCIÓN DE ELEMENTOS DEL DOM ---
@@ -16,12 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         comenzarVersus: document.getElementById('btn-comenzar-versus'),
         volverModos: document.getElementById('btn-volver-modos'),
         probarLetra: document.getElementById('btn-probar-letra'),
-        // --- AÑADIMOS LOS NUEVOS BOTONES ---
         reiniciar: document.getElementById('btn-reiniciar'),
         abandonar: document.getElementById('btn-abandonar')
     };
     
-    // ... (El resto de tus selectores de UI se quedan igual)
     const imagenAhorcado = document.getElementById('imagen-ahorcado');
     const palabraSecretaContenedor = document.getElementById('palabra-secreta');
     const letrasIncorrectasContenedor = document.getElementById('letras-incorrectas');
@@ -29,14 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputPalabraVersus = document.getElementById('input-palabra-versus');
     const inputLetra = document.getElementById('input-letra');
 
-
     // --- 2. ESTADO Y DATOS DEL JUEGO ---
     let gameState = {};
-    const palabras = ["CASA", "PAYASO", "CAMARA", "HOMERO", "PLATO", "TECLADO", "TRISTEZA", "MONITOR"];
-
+    const palabras = ["PLANETA", "GALAXIA", "COHETE", "ESTRELLA", "NEBULOSA", "ORBITA", "SATELITE", "COMETA"];
 
     // --- 3. FUNCIONES PRINCIPALES ---
-    // (Todas tus funciones como mostrarPantalla, iniciarJuego, renderizarJuego, probarLetra y verificarFinDeJuego se quedan exactamente igual)
 
     function mostrarPantalla(idDePantalla) {
         for (let key in pantallas) {
@@ -54,11 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             modo: modo,
             juegoTerminado: false
         };
-        console.log("Juego iniciado. Palabra:", gameState.palabraSecreta);
-        
         inputLetra.value = '';
         inputPalabraVersus.value = '';
-        
         renderizarJuego();
         mostrarPantalla('juego');
     }
@@ -72,15 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         letrasIncorrectasContenedor.textContent = gameState.letrasIncorrectas.join(' - ');
 
-        const numeroImagen = 7 - gameState.intentosRestantes + 1;
-        imagenAhorcado.src = `img/ahorcado_${numeroImagen}.png`;
-        
-        mensajeJuego.textContent = '';
+        if (gameState.juegoTerminado) {
+            const palabraAdivinada = gameState.palabraSecreta.split('').every(letra => gameState.letrasCorrectas.includes(letra));
+            if (palabraAdivinada) {
+                imagenAhorcado.src = 'img/ahorcadito_0.png';
+            } else {
+                imagenAhorcado.src = 'img/ahorcadito_8.png';
+            }
+        } else {
+            const numeroImagen = 7 - gameState.intentosRestantes + 1;
+            imagenAhorcado.src = `img/ahorcadito_${numeroImagen}.png`;
+        }
         
         inputLetra.disabled = gameState.juegoTerminado;
         botones.probarLetra.disabled = gameState.juegoTerminado;
     }
 
+    // --- LA FUNCIÓN QUE FALTABA ---
     function probarLetra(letra) {
         letra = letra.toUpperCase();
         
@@ -92,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mensajeJuego.textContent = `La letra '${letra}' ya fue ingresada. ¡Intenta con otra!`;
             return;
         }
+
+        mensajeJuego.textContent = ''; // Limpia el mensaje anterior
 
         if (gameState.palabraSecreta.includes(letra)) {
             gameState.letrasCorrectas.push(letra);
@@ -110,13 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .every(letra => gameState.letrasCorrectas.includes(letra));
 
         if (palabraAdivinada) {
-            mensajeJuego.textContent = "¡GANASTE! ¡Felicidades!";
+            mensajeJuego.textContent = "¡SISTEMAS RESTAURADOS! Misión Exitosa.";
             gameState.juegoTerminado = true;
-            imagenAhorcado.src = 'img/ahorcadito_0.png';
         }
 
         if (gameState.intentosRestantes <= 0) {
-            mensajeJuego.textContent = `GAME OVER. La palabra era: ${gameState.palabraSecreta}`;
+            mensajeJuego.textContent = `¡OXÍGENO AGOTADO! La palabra clave era: ${gameState.palabraSecreta}`;
             gameState.juegoTerminado = true;
         }
         
@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
             renderizarJuego();
         }
     }
-
 
     // --- 4. EVENT LISTENERS ---
 
@@ -163,24 +162,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- NUEVOS EVENTOS PARA REINICIAR Y ABANDONAR ---
-
     botones.abandonar.addEventListener('click', () => {
-        // Simplemente vuelve a la pantalla de bienvenida, reseteando el flujo.
         mostrarPantalla('bienvenida');
     });
 
     botones.reiniciar.addEventListener('click', () => {
-        // La acción de reiniciar depende del modo de juego actual.
         if (gameState.modo === 'solitario') {
-            // Si es solitario, simplemente iniciamos otro juego con una palabra nueva.
             botones.modoSolitario.click();
         } else if (gameState.modo === 'versus') {
-            // Si es versus, volvemos a la pantalla para que el Jugador 1 ingrese una nueva palabra.
             mostrarPantalla('versusPalabra');
         }
     });
-
 
     // --- INICIO DE LA APLICACIÓN ---
     mostrarPantalla('bienvenida');
