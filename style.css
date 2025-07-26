@@ -14,6 +14,12 @@ body {
     background-color: #1a1a2e; /* Un azul oscuro espacial como base */
     color: #e0e0e0;
     
+    /* Fondo espacial con una imagen */
+    background-image: url('img/outerspace-6.gif'); /* Ajusta la ruta si guardaste la imagen en otra carpeta */
+    background-size: cover; /* Cubre todo el fondo sin deformar la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen para que no se desplace con el contenido */
+
     /* Hacemos que el body use Flexbox para ocupar toda la pantalla */
     display: flex;
     flex-direction: column;
@@ -183,4 +189,36 @@ body {
     .juego-layout {
         flex-direction: column; /* Apila las columnas una sobre otra */
     }
+}
+
+
+/* ===== HEADER ===== */
+.header {
+    width: 100%;
+    padding: 1rem;
+    background-color: #0d0d2b; /* Un azul aún más oscuro para que contraste */
+    border-bottom: 2px solid #4a4a70; /* Un borde sutil para separarlo del contenido */
+    text-align: center;
+    flex-shrink: 0; /* Evita que el header se encoja */
+}
+
+.header h1 {
+    font-family: 'Orbitron', sans-serif; /* La fuente de ciencia ficción que elegimos */
+    font-size: 2rem;
+    color: #00d4ff; /* El color de acento cian */
+    margin: 0;
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.7); /* Un brillo estilo neón */
+}
+
+/* ===== FOOTER ===== */
+
+.footer-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin: 0 10px; /* Espacio entre los enlaces */
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00d4ff; /* El color de acento de ciencia ficción que elegimos */
 }
