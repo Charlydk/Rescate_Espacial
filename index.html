@@ -1,95 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-	<link rel="stylesheet" href="styles.css">
-	<title>Juego del Ahorcado</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescate Espacial (Ahorcado)</title>
 
-    
-
-</head>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
-	<div class="contenedor">
 
-		<header class="header">
-            <table class="tableHeader">
-                <tr>
-                    <td style="justify-content:initial;"> <img src="img/logo.png" alt="logo"> </td>
-                    <td style="text-align:center ;"><h2>Challenge 2</h2></td>
-                    <td style="text-align:right ;"><h5>#Oracle <br> #AluraLatam </h5></td>
-                </tr>
-            </table>
-		</header>
+    <div class="contenedor-principal">
 
-		<main class="contenido">
-            <svg viewBox="0 0 1320 300">
+        <section id="pantalla-bienvenida" class="pantalla">
+            <h1 class="titulo-juego">Juego del Ahorcado</h1>
+            <button id="btn-iniciar" class="boton">Iniciar Juego</button>
+        </section>
 
-                <!-- Symbol -->
-                <symbol id="s-text">
-                  <text text-anchor="middle"
-                        x="50%" y="35%" dy=".10em">
-                    JUEGO DEL
-                  </text>
-                  <text text-anchor="middle"
-                        x="50%" y="75%" dy=".25em">
-                    AHORCADO
-                  </text>
+        <section id="pantalla-modos" class="pantalla" style="display: none;">
+            <h2 class="subtitulo">Selecciona un modo</h2>
+            <div class="contenedor-botones">
+                <button id="btn-modo-solitario" class="boton">Solitario</button>
+                <button id="btn-modo-versus" class="boton">VS Amigo</button>
+            </div>
+        </section>
 
-                </symbol>  
-              
-                <!-- Duplicate symbols -->
-                <use xlink:href="#s-text" class="text"
-                     ></use>
-                <use xlink:href="#s-text" class="text"
-                     ></use>
-                <use xlink:href="#s-text" class="text"
-                     ></use>
-                <use xlink:href="#s-text" class="text"
-                     ></use>
-                <use xlink:href="#s-text" class="text"
-                     ></use>
-              
-              </svg>
+        <section id="pantalla-versus-palabra" class="pantalla" style="display: none;">
+            <h2 class="subtitulo">Modo Versus</h2>
+            <p>Jugador 1: Ingresa una palabra de 4 a 8 letras</p>
+            <input type="text" id="input-palabra-versus" class="input-texto" minlength="4" maxlength="8" required>
+            <div class="contenedor-botones">
+                <button id="btn-comenzar-versus" class="boton">Comenzar a Jugar</button>
+                <button id="btn-volver-modos" class="boton boton-secundario">Volver</button>
+            </div>
+        </section>
 
-		</main>
-		
-		<div class="widget-1">
-			<button class="botonInicio" id="boton">Iniciar Juego</button>
+        <section id="pantalla-juego" class="pantalla" style="display: none;">
+            <div class="juego-layout">
+                <div class="juego-columna-izquierda">
+                    <img src="img/ahorcadito_1.png" id="imagen-ahorcado" alt="Progreso del juego">
+                    <div class="letras-incorrectas-contenedor">
+                        <h3>Letras Incorrectas:</h3>
+                        <p id="letras-incorrectas"></p>
+                    </div>
+                </div>
+                <div class="juego-columna-derecha">
+                    <div id="palabra-secreta" class="palabra-secreta-contenedor">
+                        </div>
+                    <p id="mensaje-juego" class="mensaje"></p>
+                    <div class="input-contenedor">
+                        <input type="text" id="input-letra" class="input-letra" maxlength="1" required>
+                        <button id="btn-probar-letra" class="boton">Probar Letra</button>
+                    </div>
+                    <div class="contenedor-botones">
+                        <button id="btn-reiniciar" class="boton boton-secundario">Reiniciar</button>
+                        <button id="btn-abandonar" class="boton boton-secundario">Abandonar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-            <button class="botonSolitario" id="boton"  onclick="location.href='Msolitario.html'" style="display: none">Solitari@</button>
+    <footer class="footer">
+        <h4>#AluraChallenge | Creado por Fabián Bernardino</h4>
+    </footer>
 
-            <button class="botonVersus" id="boton" onclick="location.href='Mversus.html'" style="display: none ">VS Amig@</button>
-		</div>
-
-        
-        <footer class="footer">
-                <h4>#AluraChallenge</h4>
-                <h5>©Todos los derechos reservados - 2022</h5>
-                <h5>Creado por Bernardino Fabian Augusto</h5>
-                <a title="GitHub" href="https://github.com/Charlydk">  <img src="img/github_logo_icon_143772.ico" alt="icolinkedin"></a>
-                <a title="Linkdin" href="https://www.linkedin.com/in/fabian-bernardino/">  <img src="img/linkedin_socialnetwork_17441.ico" alt="icolinkedin"></a>
-        </footer>
-      
-
-
-	</div>
+    <script src="juego.js"></script> 
 </body>
-
-
-<script>
-    var botoniniciar = document.querySelector(".botonInicio");
-botoniniciar.addEventListener("click", function (event){
-    event.preventDefault();
-    document.querySelector(".botonSolitario").style.display = "block";
-    document.querySelector(".botonVersus").style.display = "block";
-
-    document.querySelector(".botonInicio").style.display = "none"
-
-})
-</script>
-
 </html>

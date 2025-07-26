@@ -1,0 +1,182 @@
+/* ===== ESTILOS GENERALES Y RESET BÁSICO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a2e; /* Un azul oscuro espacial como base */
+    color: #e0e0e0;
+    
+    /* Hacemos que el body use Flexbox para ocupar toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+.contenedor-principal {
+    flex-grow: 1; /* Permite que este contenedor crezca para ocupar el espacio disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.pantalla {
+    width: 100%;
+    max-width: 800px; /* Ancho máximo para el contenido del juego */
+    padding: 2rem;
+    background-color: rgba(13, 13, 43, 0.8); /* Fondo de sección semi-transparente */
+    border: 1px solid #4a4a70;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(74, 74, 112, 0.5);
+
+    /* Usamos Flexbox para centrar el contenido de cada pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer {
+    padding: 1rem;
+    text-align: center;
+    background-color: #0d0d2b;
+    border-top: 1px solid #4a4a70;
+}
+
+/* ===== ESTILOS DE COMPONENTES REUTILIZABLES ===== */
+.titulo-juego {
+    font-family: 'Creepster', cursive;
+    font-size: 4rem;
+    color: #ffcc00;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px #ffcc00;
+}
+
+.subtitulo {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.boton {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border: 2px solid #ffcc00;
+    background-color: transparent;
+    color: #ffcc00;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 200px;
+}
+
+.boton:hover {
+    background-color: #ffcc00;
+    color: #1a1a2e;
+}
+
+.boton-secundario {
+    border-color: #4a4a70;
+    color: #e0e0e0;
+}
+
+.boton-secundario:hover {
+    background-color: #4a4a70;
+    color: #fff;
+}
+
+.input-texto, .input-letra {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: #0d0d2b;
+    border: 1px solid #4a4a70;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.input-letra {
+    width: 60px;
+    text-transform: uppercase;
+}
+
+.contenedor-botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* ===== PANTALLA DE JUEGO ===== */
+.juego-layout {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.juego-columna-izquierda, .juego-columna-derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imagen-ahorcado {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.letras-incorrectas-contenedor h3 {
+    margin-bottom: 0.5rem;
+    color: #ff4d4d;
+}
+
+#letras-incorrectas {
+    font-size: 1.5rem;
+    color: #ff4d4d;
+    font-weight: bold;
+    min-height: 2.5rem; /* Para que no salte el layout cuando está vacío */
+}
+
+.palabra-secreta-contenedor {
+    font-family: 'Creepster', cursive;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 4rem; /* Evita saltos de layout */
+}
+
+.mensaje {
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.input-contenedor {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* ===== RESPONSIVIDAD PARA MÓVILES ===== */
+@media (max-width: 768px) {
+    .titulo-juego {
+        font-size: 3rem;
+    }
+
+    .juego-layout {
+        flex-direction: column; /* Apila las columnas una sobre otra */
+    }
+}
